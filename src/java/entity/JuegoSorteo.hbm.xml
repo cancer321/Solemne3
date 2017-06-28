@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 22, 2017 9:58:55 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="entity.JuegoSorteo" table="Juego_Sorteo" schema="dbo" catalog="PollaGol" optimistic-lock="version">
+        <id name="idJuegoSorteo" type="int">
+            <column name="id_juego_sorteo" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="juego" class="entity.Juego" fetch="select">
+            <column name="id_juego" not-null="true" />
+        </many-to-one>
+        <many-to-one name="sorteo" class="entity.Sorteo" fetch="select">
+            <column name="id_sorteo" not-null="true" />
+        </many-to-one>
+        <property name="fechaJuego" type="date">
+            <column name="fecha_juego" length="10" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

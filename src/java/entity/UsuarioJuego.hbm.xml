@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 22, 2017 9:58:55 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="entity.UsuarioJuego" table="Usuario_Juego" schema="dbo" catalog="PollaGol" optimistic-lock="version">
+        <id name="idUsuarioJuego" type="int">
+            <column name="id_usuario_juego" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="juego" class="entity.Juego" fetch="select">
+            <column name="id_juego" not-null="true" />
+        </many-to-one>
+        <many-to-one name="usuario" class="entity.Usuario" fetch="select">
+            <column name="id_usuario" not-null="true" />
+        </many-to-one>
+        <property name="fechaJuego" type="int">
+            <column name="fecha_juego" not-null="true" />
+        </property>
+        <set name="historialGanadoreses" table="Historial_ganadores" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_usuario_juego" not-null="true" />
+            </key>
+            <one-to-many class="entity.HistorialGanadores" />
+        </set>
+    </class>
+</hibernate-mapping>

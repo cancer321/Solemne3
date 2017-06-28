@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 22, 2017 9:58:55 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="entity.Pozo" table="Pozo" schema="dbo" catalog="PollaGol" optimistic-lock="version">
+        <id name="idPozo" type="int">
+            <column name="id_pozo" />
+            <generator class="assigned" />
+        </id>
+        <property name="pozo" type="int">
+            <column name="pozo" not-null="true" />
+        </property>
+        <set name="usuarios" table="Usuario" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_pozo" not-null="true" />
+            </key>
+            <one-to-many class="entity.Usuario" />
+        </set>
+        <set name="sorteos" table="Sorteo" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_pozo" not-null="true" />
+            </key>
+            <one-to-many class="entity.Sorteo" />
+        </set>
+    </class>
+</hibernate-mapping>

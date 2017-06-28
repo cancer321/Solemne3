@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 22, 2017 9:58:55 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="entity.Juego" table="Juego" schema="dbo" catalog="PollaGol" optimistic-lock="version">
+        <id name="idJuego" type="int">
+            <column name="id_juego" />
+            <generator class="assigned" />
+        </id>
+        <property name="combinacion" type="string">
+            <column name="combinacion" length="50" not-null="true" />
+        </property>
+        <property name="ganadorAciertos" type="int">
+            <column name="ganador_aciertos" not-null="true" />
+        </property>
+        <set name="usuarioJuegos" table="Usuario_Juego" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_juego" not-null="true" />
+            </key>
+            <one-to-many class="entity.UsuarioJuego" />
+        </set>
+        <set name="juegoSorteos" table="Juego_Sorteo" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_juego" not-null="true" />
+            </key>
+            <one-to-many class="entity.JuegoSorteo" />
+        </set>
+    </class>
+</hibernate-mapping>
