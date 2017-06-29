@@ -24,6 +24,9 @@
             <nav class="navbar">
                 <div class="container">
                     <ul class="navbar-list">
+                        <li class="navbar-item">
+                            <a class="navbar-link" href="home.htm">Inicio</a>
+                        </li>
                         <c:set var="var" value="1" scope="page"/>
                         <c:forEach items="${listadoMenu}" var="objMenuPadre">
                             <c:if test="${objMenuPadre.padreMenu==null}">
@@ -45,7 +48,7 @@
                             </c:if>
                         </c:forEach>
                         <li class="navbar-item">
-                            <a class="navbar-link" href="#">Salir</a>
+                            <a class="navbar-link" href="logout.htm">Salir</a>
                         </li>
                     </ul>
                 </div>

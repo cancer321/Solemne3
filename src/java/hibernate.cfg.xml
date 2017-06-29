@@ -8,15 +8,15 @@
     <property name="hibernate.connection.password">black160594</property>
     <property name="hibernate.current_session_context_class">thread</property>
     <property name="hibernate.connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
-    <mapping resource="entity/Perfil.hbm.xml"/>
     <mapping resource="entity/Sysdiagrams.hbm.xml"/>
-    <mapping resource="entity/UsuarioJuego.hbm.xml"/>
     <mapping resource="entity/HistorialGanadores.hbm.xml"/>
-    <mapping resource="entity/Usuario.hbm.xml"/>
-    <mapping resource="entity/Menu.hbm.xml"/>
-    <mapping resource="entity/Pozo.hbm.xml"/>
-    <mapping resource="entity/Sorteo.hbm.xml"/>
+    <mapping resource="entity/UsuarioJuego.hbm.xml"/>
     <mapping resource="entity/JuegoSorteo.hbm.xml"/>
+    <mapping resource="entity/Pozo.hbm.xml"/>
+    <mapping resource="entity/Perfil.hbm.xml"/>
+    <mapping resource="entity/Usuario.hbm.xml"/>
     <mapping resource="entity/Juego.hbm.xml"/>
+    <mapping resource="entity/Menu.hbm.xml"/>
+    <mapping resource="entity/Sorteo.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

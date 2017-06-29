@@ -15,11 +15,15 @@
     <body>
         <div class="container">
             <section class="header">
-                <h1 class="title">Bienvenido ${usuarioConectado.nombreUsuario}.</h1>
+                <jsp:useBean id="usuarioConectado" class="entity.Usuario" scope="page"/>
+                <h1 class="title">Bienvenido ${usuario.nombreUsuario}.</h1>
             </section>
             <jsp:include page="./menu.jsp" flush="true"/>
             <div class="docs-section" id="meme">
                 <h2>mimo</h2>
+            </div>
+            <div class="docs-section" id="mimo">
+                <h6>@Todos los derechos reservados mimo de mim 6969 - 1234</h6>
             </div>
         </div>
     </body>

@@ -41,14 +41,14 @@ Contributor(s):
 -->
 <hibernate-reverse-engineering>
   <schema-selection match-catalog="PollaGol"/>
-  <table-filter match-name="Historial_ganadores"/>
-  <table-filter match-name="sysdiagrams"/>
-  <table-filter match-name="Menu"/>
-  <table-filter match-name="Juego_Sorteo"/>
-  <table-filter match-name="Perfil"/>
-  <table-filter match-name="Usuario"/>
-  <table-filter match-name="Pozo"/>
-  <table-filter match-name="Juego"/>
   <table-filter match-name="Sorteo"/>
+  <table-filter match-name="Pozo"/>
+  <table-filter match-name="Usuario"/>
   <table-filter match-name="Usuario_Juego"/>
+  <table-filter match-name="Perfil"/>
+  <table-filter match-name="sysdiagrams"/>
+  <table-filter match-name="Historial_ganadores"/>
+  <table-filter match-name="Juego_Sorteo"/>
+  <table-filter match-name="Juego"/>
+  <table-filter match-name="Menu"/>
 </hibernate-reverse-engineering>

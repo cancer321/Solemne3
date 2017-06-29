@@ -27,7 +27,7 @@ public class LoginController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public ModelAndView login(@ModelAttribute("usuario") Usuario u,
+    public String login(@ModelAttribute("usuario") Usuario u,
             BindingResult result, SessionStatus status, HttpServletRequest request) {
         ModelAndView mv = new ModelAndView();
         String user = request.getParameter("nombreUsuario");
@@ -35,13 +35,13 @@ public class LoginController {
         Usuario usuario = new Usuario(user, pass);
         UsuarioModel objUsuarioModel = new UsuarioModel();
         Usuario objUsuario = objUsuarioModel.validaUsuario(user, pass);
-        if (objUsuario!=null) {
-            mv.addObject("usuarioConectado",objUsuario);
-            return new ModelAndView("redirect:/home.htm");
+        if (objUsuario != null) {
+            mv.addObject("usuario", objUsuario);
+            return "redirect:/home.htm";
+
         } else {
-            mv.addObject("usuario",usuario);
-            mv.setViewName("login");
-            return mv;
+            mv.addObject("usuario", usuario);
+            return "redirect:/login.htm";
         }
     }
 }

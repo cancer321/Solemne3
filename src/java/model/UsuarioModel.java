@@ -93,6 +93,7 @@ public class UsuarioModel {
             query.setParameter("nombreUsuario", login);
             query.setParameter("password", password);
             objUsuario = (Usuario) query.uniqueResult();
+            tx.commit();
         } catch (HibernateException e) {
         }
         return objUsuario;

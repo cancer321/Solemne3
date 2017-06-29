@@ -1,6 +1,7 @@
 package controller;
 
 import entity.Menu;
+import entity.Perfil;
 import entity.Usuario;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
@@ -19,9 +20,12 @@ public class HomeController {
 
     public ModelAndView home(@ModelAttribute("usuario") Usuario u,
             BindingResult result, SessionStatus status, HttpServletRequest request) {
-        ModelAndView mv = new ModelAndView("login");
-        Usuario usu = (Usuario) request.getAttribute("usuarioConectado");
+        ModelAndView mv = new ModelAndView();
         MenuModel menuModel = new MenuModel();
+        Usuario usu = (Usuario) request.getAttribute("usuario");
+        Perfil id = usu.getPerfil();
+        List<Menu> listado = menuModel.getMenuXPerfil(id);
+        mv.addObject("listadoMenu", listado);
         mv.setViewName("home");
         return mv;
     }
