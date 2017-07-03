@@ -75,12 +75,12 @@ public class MenuModel {
         return objMenu;
     }
     
-     public List<Menu>getMenuXPerfil(Perfil id){
+     public List<Menu>getMenuXPerfil(int id){
         Transaction tx=this.session.beginTransaction();
         List<Menu> listadoMenu=null;
         try{
             Query query=this.session.createQuery("from Menu as menu where menu.perfil.idPerfil = :perfil");
-            query.setParameter("perfil", id.getIdPerfil());
+            query.setParameter("perfil", id);
             listadoMenu=(List<Menu>)query.list();
             tx.commit();
         }catch(HibernateException ex){

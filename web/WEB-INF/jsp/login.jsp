@@ -24,21 +24,24 @@
                 <h6 class="docs-header">mimo</h6>
             </div>
             <div class="docs-example">
-                <form:form method="POST" commandName="usuario">
+                <form:form method="POST" modelAttribute="usuario">
                     <div class="row">
                         <div class="twelve column">
                             <form:label for="usu" path="nombreUsuario">Login</form:label>
-                            <form:input cssClass="u-full-width" id="usu" path="nombreUsuario"/>
+                            <form:input cssClass="u-full-width" path="nombreUsuario"/>
                         </div>
                     </div>
                     <div class="row">
                         <div class="twelve column">
                             <form:label for="pass" path="password">Password</form:label>
-                            <form:input cssClass="u-full-width" id="pass" path="password"/>
+                            <form:input cssClass="u-full-width" path="password"/>
                         </div>
                     </div>
                     <form:button>Ingresar</form:button>
                 </form:form>
+                <c:url var="agregarUsu" value="/agregarUsu">
+                </c:url>
+                <td><button type="button"  onclick="window.location.href = '${agregarUsu}'">Registrar</button></td>
             </div>
         </div>
     </body>
