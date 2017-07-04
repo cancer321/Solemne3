@@ -16,20 +16,8 @@ import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@SessionAttributes("usuario")
-@RequestMapping(value = "login.htm")
-public class LoginController {
-
-    @RequestMapping(method = RequestMethod.GET)
-    public ModelAndView login(HttpServletRequest request) {
-        ModelAndView mv = new ModelAndView();
-        String user = request.getParameter("loginUsuario");
-        String pass = request.getParameter("passUsuario");
-        Usuario usuario = new Usuario(user, pass);
-        mv.addObject("usuario", usuario);
-        mv.setViewName("login");
-        return mv;
-    }
+@RequestMapping("home.htm")
+public class AddUsuarioController {
 
     @RequestMapping(method = RequestMethod.POST)
     public ModelAndView login(@ModelAttribute("usuario") Usuario u,
@@ -37,6 +25,8 @@ public class LoginController {
         ModelAndView mv = new ModelAndView();
         String user = request.getParameter("nombreUsuario");
         String pass = request.getParameter("password");
+        String nombre = request.getParameter("password");
+        String apellido = request.getParameter("password");
         Usuario usuario = new Usuario(user, pass);
         UsuarioModel objUsuarioModel = new UsuarioModel();
         Usuario objUsuario = objUsuarioModel.validaUsuario(user, pass);

@@ -18,6 +18,7 @@
                 <prop key="home.htm">HomeController</prop>
                 <prop key="login.htm">LoginController</prop>
                 <prop key="logout.htm">LogoutController</prop>
+                <prop key="addUsuario.htm">AddUsuarioController</prop>
             </props>
         </property>
     </bean>
@@ -26,6 +27,7 @@
     <bean name="HomeController" class="controller.HomeController" />
     <bean name="LoginController" class="controller.LoginController" />
     <bean name="LogoutController" class="controller.LogoutController" />
+    <bean name="AddUsuarioController" class="controller.AddUsuarioController" />
 
     <bean id="viewResolver"
           class="org.springframework.web.servlet.view.InternalResourceViewResolver"

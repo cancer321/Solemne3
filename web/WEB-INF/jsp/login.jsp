@@ -21,7 +21,7 @@
     <body>
         <div class="container">
             <div class="docs-section" id="forms">
-                <h6 class="docs-header">mimo</h6>
+                <h1 class="docs-header">Login</h1>
             </div>
             <div class="docs-example">
                 <form:form method="POST" modelAttribute="usuario">
