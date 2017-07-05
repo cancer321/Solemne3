@@ -30,6 +30,7 @@ public class HomeController {
             int id = usu.getPerfil().getIdPerfil();
             List<Menu> listado = menuModel.getMenuXPerfil(id);
             mv.addObject("listadoMenu", listado);
+            mv.addObject("usuario", usu);
             mv.setViewName("home");
             return mv;
         } catch (Exception e) {

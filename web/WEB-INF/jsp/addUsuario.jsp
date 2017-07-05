@@ -21,18 +21,16 @@
     <body>
         <div class="container">
             <div class="docs-section" id="forms">
-                <h6 class="docs-header">mimo</h6>
+                <h1 class="docs-header">Registrar nuevo usuario</h1>
             </div>
             <div class="docs-example">
                 <form:form method="POST" commandName="usuario">
                     <div class="row">
-                        <div class="twelve column">
+                        <div class="six columns">
                             <form:label for="usu" path="nombreUsuario">Login</form:label>
                             <form:input cssClass="u-full-width" path="nombreUsuario"/>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="twelve column">
+                        <div class="six columns">
                             <form:label for="pass" path="password">Password</form:label>
                             <form:input cssClass="u-full-width" path="password"/>
                         </div>

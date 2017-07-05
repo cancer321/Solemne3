@@ -19,7 +19,7 @@
                 <prop key="login.htm">LoginController</prop>
                 <prop key="logout.htm">LogoutController</prop>
                 <prop key="addUsuario.htm">AddUsuarioController</prop>
-                <prop key="addPago">AddPagoController</prop>
+                <prop key="addPago.htm">AddPagoController</prop>
             </props>
         </property>
     </bean>

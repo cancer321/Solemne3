@@ -20,7 +20,7 @@
     <body>
         <div class="container">
             <div class="docs-section" id="forms">
-                <h1 class="docs-header">Login</h1>
+                <h1>Login</h1>
             </div>
             <div class="docs-example">
                 <form:form method="POST" modelAttribute="usuario">

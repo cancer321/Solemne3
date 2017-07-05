@@ -41,7 +41,7 @@ public class UsuarioModel {
 
     }
 
-    public void updateUsuario(Menu objUsuario) {
+    public void updateUsuario(Usuario objUsuario) {
         Transaction tx = session.beginTransaction();
         try {
             session.update(objUsuario);

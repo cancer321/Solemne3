@@ -1,5 +1,8 @@
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib  prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"   %>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -9,28 +12,29 @@
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/skeleton.css">
         <link rel="stylesheet" href="css/m.css">
-        <link rel="icon" type="image/png" href="images/favicon.png">
+        <script src="js/jquery.min.js"></script>
+        <script src="js/run_prettify.js"></script>
+        <link rel="stylesheet" href="css/prettify.css">
+        <script src="js/site.js"></script>
         <title></title>
     </head>
     <body>
-        <c:choose>
-            <c:when test="${usuario!=null}">
-                <div class="container">
-                    <section class="header">
-                        <h1 class="title">Bienvenido ${usuario.nombreUsuario}.</h1>
-                    </section>
-                    <jsp:include page="./menu.jsp" flush="true"/>
-                    <div class="docs-section" id="meme">
-                        <h2>mimo</h2>
+        <div class="container">
+            <section class="header">
+                <h1 class="title">Bienvenido ${usuario.nombreUsuario}.</h1>
+            </section>
+            <jsp:include page="./menu.jsp" flush="true"/>
+            <div class="docs-section" id="meme">
+                <form:form method="POST" commandName="usuario">
+                    <div class="row">
+                        <div class="six columns">
+                            <form:label for="fon" path="fondo">Agregar fondo</form:label>
+                            <form:input path="fondo"/>
+                        </div>
                     </div>
-                    <div class="docs-section" id="mimo">
-                        <h6>@Todos los derechos reservados mimo de mim 6969 - 1234</h6>
-                    </div>
-                </div>
-            </c:when>
-            <c:otherwise>
-                <c:redirect url="login.jsp"/>
-            </c:otherwise>
-        </c:choose>
+                    <form:button>Agregar dinero</form:button>
+                </form:form>
+            </div>
+        </div>
     </body>
 </html>
