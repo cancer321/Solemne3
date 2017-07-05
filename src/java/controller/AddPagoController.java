@@ -20,12 +20,6 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("addPago.htm")
 public class AddPagoController {
 
-    private UsuarioModel objUsuarioModel;
-
-    public AddPagoController() {
-        this.objUsuarioModel = new UsuarioModel();
-    }
-
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView AddPagoController(@ModelAttribute("usuario") Usuario u,
             BindingResult result, SessionStatus status, HttpServletRequest request) {
@@ -56,7 +50,8 @@ public class AddPagoController {
             mav.addObject("usuario", u);
             return mav;
         } else {
-            this.objUsuarioModel.updateUsuario(u);
+            UsuarioModel objUsuarioModel = new UsuarioModel();
+            objUsuarioModel.updateUsuario(u);
             ModelAndView mav = new ModelAndView();
             mav.addObject("usuario", u);
             mav.setViewName("addPago");

@@ -20,12 +20,6 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("addUsuario.htm")
 public class AddUsuarioController {
 
-    private UsuarioModel objUsuarioModel;
-
-    public AddUsuarioController() {
-        this.objUsuarioModel = new UsuarioModel();
-    }
-
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView addUsuario() {
         ModelAndView mv = new ModelAndView();
@@ -49,7 +43,8 @@ public class AddUsuarioController {
             mv.addObject("usuario", new Usuario());
             return mv;
         } else {
-            this.objUsuarioModel.createUsuario(u);
+            UsuarioModel objUsuarioModel = new UsuarioModel();
+            objUsuarioModel.createUsuario(u);
             mv.addObject("usuario", u);
             int id = u.getPerfil().getIdPerfil();
             MenuModel menuModel = new MenuModel();

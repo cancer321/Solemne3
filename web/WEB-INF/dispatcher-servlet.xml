@@ -20,6 +20,7 @@
                 <prop key="logout.htm">LogoutController</prop>
                 <prop key="addUsuario.htm">AddUsuarioController</prop>
                 <prop key="addPago.htm">AddPagoController</prop>
+                <prop key="mantenedorUsuario.htm">MantenedorUsuarioController</prop>
             </props>
         </property>
     </bean>
@@ -30,6 +31,7 @@
     <bean name="LogoutController" class="controller.LogoutController" />
     <bean name="AddUsuarioController" class="controller.AddUsuarioController" />
     <bean name="AddPagoController" class="controller.AddPagoController" />
+    <bean name="MantenedorUsuarioController" class="controller.MantenedorUsuarioController" />
 
     <bean id="viewResolver"
           class="org.springframework.web.servlet.view.InternalResourceViewResolver"

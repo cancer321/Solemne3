@@ -14,7 +14,7 @@ public class UsuarioModel {
     private Session session;
 
     public UsuarioModel() {
-        this.session = HibernateUtil.getSessionFactory().getCurrentSession();
+        this.session = HibernateUtil.getSessionFactory().openSession();
     }
 
     public List<Usuario> getAllUsuario() {
