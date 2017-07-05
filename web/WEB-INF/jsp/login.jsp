@@ -8,7 +8,6 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/skeleton.css">
         <link rel="stylesheet" href="css/m.css">
@@ -26,22 +25,26 @@
             <div class="docs-example">
                 <form:form method="POST" modelAttribute="usuario">
                     <div class="row">
-                        <div class="twelve column">
+                        <div class="six columns">
                             <form:label for="usu" path="nombreUsuario">Login</form:label>
                             <form:input cssClass="u-full-width" path="nombreUsuario"/>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="twelve column">
+                        <div class="six columns">
                             <form:label for="pass" path="password">Password</form:label>
-                            <form:input cssClass="u-full-width" path="password"/>
+                            <form:password cssClass="u-full-width" path="password"/>
                         </div>
                     </div>
                     <form:button>Ingresar</form:button>
                 </form:form>
                 <c:url var="addUsuario" value="/addUsuario.htm">
                 </c:url>
-                <td><button type="button"  onclick="window.location.href = '${addUsuario}'">Registrar</button></td>
+                    <td><button type="button" class="button-primary" onclick="window.location.href = '${addUsuario}'">Registrar</button></td>
+                <c:if test="${error!=null}">
+                    <div class="alert">
+                        <strong><c:out value="${error}"/></strong>
+                        <c:remove var="error"/>
+                    </div>
+                </c:if> 
             </div>
         </div>
     </body>

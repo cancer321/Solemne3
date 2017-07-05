@@ -35,22 +35,30 @@ public class LoginController {
     public ModelAndView login(@ModelAttribute("usuario") Usuario u,
             BindingResult result, SessionStatus status, HttpServletRequest request) {
         ModelAndView mv = new ModelAndView();
-        String user = request.getParameter("nombreUsuario");
-        String pass = request.getParameter("password");
-        Usuario usuario = new Usuario(user, pass);
-        UsuarioModel objUsuarioModel = new UsuarioModel();
-        Usuario objUsuario = objUsuarioModel.validaUsuario(user, pass);
-        if (objUsuario != null) {
-            mv.addObject("usuario", objUsuario);
-            int id = objUsuario.getPerfil().getIdPerfil();
-            MenuModel menuModel = new MenuModel();
-            List<Menu> listado = menuModel.getMenuXPerfil(id);
-            mv.addObject("listadoMenu", listado);
-            mv.setViewName("home");
+        try {
+            String user = request.getParameter("nombreUsuario");
+            String pass = request.getParameter("password");
+            UsuarioModel objUsuarioModel = new UsuarioModel();
+            Usuario objUsuario = objUsuarioModel.validaUsuario(user, pass);
+            if (objUsuario != null) {
+                mv.addObject("usuario", objUsuario);
+                int id = objUsuario.getPerfil().getIdPerfil();
+                MenuModel menuModel = new MenuModel();
+                List<Menu> listado = menuModel.getMenuXPerfil(id);
+                mv.addObject("listadoMenu", listado);
+                mv.setViewName("home");
+                return mv;
+            } else {
+                mv.addObject("usuario", new Usuario());
+                mv.addObject("error", "Usuario no existe");
+                mv.setViewName("login");
+                return mv;
+            }
+        } catch (Exception e) {
+            mv.addObject("usuario", new Usuario());
+            mv.addObject("error", "Usuario no existe");
+            mv.setViewName("login");
             return mv;
-        } else {
-            mv.addObject("usuario", usuario);
-            return new ModelAndView("redirect:/login.htm");
         }
     }
 }
