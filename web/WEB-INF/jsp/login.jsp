@@ -39,9 +39,9 @@
                     </div>
                     <form:button>Ingresar</form:button>
                 </form:form>
-                <c:url var="agregarUsu" value="/agregarUsu">
+                <c:url var="addUsuario" value="/addUsuario.htm">
                 </c:url>
-                <td><button type="button"  onclick="window.location.href = '${agregarUsu}'">Registrar</button></td>
+                <td><button type="button"  onclick="window.location.href = '${addUsuario}'">Registrar</button></td>
             </div>
         </div>
     </body>

@@ -14,10 +14,9 @@
     </head>
     <body>
         <c:choose>
-            <c:when test="${(usuario!=null)}">
+            <c:when test="${1=1}">
                 <div class="container">
                     <section class="header">
-                        <jsp:useBean id="usuarioConectado" class="entity.Usuario" scope="page"/>
                         <h1 class="title">Bienvenido ${usuario.nombreUsuario}.</h1>
                     </section>
                     <jsp:include page="./menu.jsp" flush="true"/>

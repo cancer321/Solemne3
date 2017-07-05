@@ -24,7 +24,7 @@
                 <h6 class="docs-header">mimo</h6>
             </div>
             <div class="docs-example">
-                <form:form method="POST" modelAttribute="usuario">
+                <form:form method="POST" commandName="usuario">
                     <div class="row">
                         <div class="twelve column">
                             <form:label for="usu" path="nombreUsuario">Login</form:label>
