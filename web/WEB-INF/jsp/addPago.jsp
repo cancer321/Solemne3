@@ -33,6 +33,7 @@
                         </div>
                         <div class="six columns">
                             Fondo actual $<c:out value="${usuario.fondo}"/>
+                            
                         </div>
                     </div>
                     <form:button>Agregar dinero</form:button>

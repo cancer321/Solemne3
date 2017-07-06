@@ -26,12 +26,10 @@ public class AddPagoController {
         ModelAndView mv = new ModelAndView();
         MenuModel menuModel = new MenuModel();
         try {
-            Usuario usu = u;
-            int id = usu.getPerfil().getIdPerfil();
+            int id = u.getPerfil().getIdPerfil();
             List<Menu> listado = menuModel.getMenuXPerfil(id);
             mv.addObject("listadoMenu", listado);
-            mv.addObject("dineroActual", usu);
-            mv.addObject("usuario", usu);
+            mv.addObject("usuario", u);
             mv.setViewName("addPago");
             return mv;
         } catch (Exception e) {
@@ -41,11 +39,8 @@ public class AddPagoController {
 
     @RequestMapping(method = RequestMethod.POST)
     public ModelAndView form(
-            @ModelAttribute("usuario") Usuario u,
-            @ModelAttribute("dineroActual") Usuario dinero,
-            BindingResult result,
-            SessionStatus status,
-            HttpServletRequest request) {
+            @ModelAttribute("usuario") Usuario u, BindingResult result,
+            SessionStatus status, HttpServletRequest request) {
         if (result.hasErrors()) {
             ModelAndView mav = new ModelAndView();
             mav.setViewName("addPago");
@@ -53,11 +48,10 @@ public class AddPagoController {
             return mav;
         } else {
             UsuarioModel objUsuarioModel = new UsuarioModel();
-            int total = u.getFondo() + dinero.getFondo();
-            u.setFondo(total);
-            objUsuarioModel.updateUsuario(u);
+            objUsuarioModel.updateDinero(u);
             ModelAndView mav = new ModelAndView();
-            mav.addObject("usuario", u);
+            UsuarioModel objUsuarioModel2 = new UsuarioModel();
+            mav.addObject("usuario", objUsuarioModel2.getUsuario(u.getIdUsuario()));
             int id = u.getPerfil().getIdPerfil();
             MenuModel menuModel = new MenuModel();
             List<Menu> listado = menuModel.getMenuXPerfil(id);

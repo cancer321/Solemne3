@@ -39,21 +39,26 @@
                                 <td><c:out value="${usu.nombre}"/></td>
                                 <td><c:out value="${usu.apellido}"/></td>
                                 <td><c:out value="${usu.fondo}"/></td>
-                                <td><c:out value="${usu.estado}"/></td>
+                                <c:if test="${usu.estado==0}">
+                                    <td>Deshabilitado</td>
+                                </c:if>
+                                <c:if test="${usu.estado==1}">
+                                    <td>Habilitado</td>
+                                </c:if>
                                 <td><c:out value="${usu.perfil.nombrePerfil}"/></td>
-                                <c:url var="editar" value="/editarTrabajador">
-                                    <c:param name="id_trabajador" value="${usu.idUsuario}"/>
+                                <c:url var="editar" value="/editUsuario.htm">
+                                    <c:param name="id_usuario" value="${usu.idUsuario}"/>
                                 </c:url>
                                 <td><button type="button" class="btn btn-xs btn-warning" onclick="window.location.href = '${editar}'">Editar</button></td>                                            
                                 <c:if test="${usu.estado==0}">
-                                    <c:url var="eliminar" value="/eliminaTrabajador">
-                                        <c:param name="id_trabajador" value="${usu.idUsuario}"/>
+                                    <c:url var="eliminar" value="/deleteUsuario.htm">
+                                        <c:param name="id_usuario" value="${usu.idUsuario}"/>
                                     </c:url>
                                     <td><button type="button" onclick="window.location.href = '${eliminar}'">Habilitar</button></td>
                                 </c:if>
                                 <c:if test="${usu.estado==1}">
-                                    <c:url var="eliminar" value="/eliminaTrabajador">
-                                        <c:param name="id_trabajador" value="${usu.idUsuario}"/>
+                                    <c:url var="eliminar" value="/deleteUsuario.htm">
+                                        <c:param name="id_usuario" value="${usu.idUsuario}"/>
                                     </c:url>
                                     <td><button type="button" onclick="window.location.href = '${eliminar}'">Deshabilitar</button></td>
                                 </c:if>

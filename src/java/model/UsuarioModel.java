@@ -1,6 +1,5 @@
 package model;
 
-import entity.Menu;
 import entity.Usuario;
 import java.util.LinkedList;
 import java.util.List;
@@ -15,9 +14,9 @@ public class UsuarioModel {
 
     public UsuarioModel() {
         try {
-            this.session = HibernateUtil.getSessionFactory().openSession();
-        } catch (HibernateException ex) {
             this.session = HibernateUtil.getSessionFactory().getCurrentSession();
+        } catch (HibernateException ex) {
+            this.session = HibernateUtil.getSessionFactory().openSession();
         }
     }
 
@@ -38,7 +37,6 @@ public class UsuarioModel {
         try {
             session.save(objUsuario);
             tx.commit();
-            session.flush();
         } catch (HibernateException ex) {
             ex.printStackTrace();
             System.out.println(ex.toString());
@@ -48,7 +46,7 @@ public class UsuarioModel {
     }
 
     public void updateUsuario(Usuario objUsuario) {
-        Transaction tx = session.beginTransaction();
+        Transaction tx = this.session.beginTransaction();
         try {
             session.update(objUsuario);
             tx.commit();
@@ -58,16 +56,22 @@ public class UsuarioModel {
         }
     }
 
-    public void removeUsuario(Usuario objUsuario) {
-        Transaction tx = session.beginTransaction();
+    public void removeUsuario(int id) {
+        Transaction tx = this.session.beginTransaction();
         try {
-            session.delete(objUsuario);
+            Usuario objUsuario = (Usuario) session.get(Usuario.class, id);
+            if (objUsuario.getEstado() == 0) {
+                objUsuario.setEstado(1);
+            } else {
+                objUsuario.setEstado(0);
+            }
+            session.update(objUsuario);
             tx.commit();
+            session.flush();
         } catch (HibernateException ex) {
             ex.printStackTrace();
             tx.rollback();
         }
-
     }
 
     public Usuario getUsuario(int id) {
@@ -97,4 +101,18 @@ public class UsuarioModel {
         }
         return objUsuario;
     }
+
+    public void updateDinero(Usuario u) {
+        Transaction tx = this.session.beginTransaction();
+        try {
+            Usuario objUsuario = (Usuario) session.get(Usuario.class, u.getIdUsuario());
+            objUsuario.setFondo(objUsuario.getFondo() + u.getFondo());
+            session.update(objUsuario);
+            tx.commit();
+        } catch (HibernateException ex) {
+            ex.printStackTrace();
+            tx.rollback();
+        }
+    }
+
 }

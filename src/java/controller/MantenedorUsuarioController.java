@@ -20,7 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 @SessionAttributes("usuario")
 @RequestMapping("mantenedorUsuario.htm")
 public class MantenedorUsuarioController {
-    
+
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView mantenedorUsu(@ModelAttribute("usuario") Usuario u,
             BindingResult result, SessionStatus status, HttpServletRequest request) {
