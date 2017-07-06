@@ -49,8 +49,8 @@
                     </div>
                     <div class="row">
                         <div class="twelve column">
-                            <form:label path="Perfil" >Perfil</form:label>
-                            <form:select path="Perfil" multiple="false">
+                            <form:label path="perfil" >Perfil</form:label>
+                            <form:select path="perfil" multiple="false">
                                 <form:option value="0"> --- Seleccione Perfil ---</form:option>
                                 <form:options items="${listadoPerfil}" itemValue="idPerfil" itemLabel="nombrePerfil"/>
                             </form:select>

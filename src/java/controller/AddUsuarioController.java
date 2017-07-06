@@ -9,6 +9,7 @@ import model.MenuModel;
 import model.PerfilModel;
 import model.PozoModel;
 import model.UsuarioModel;
+import org.hibernate.HibernateException;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -38,20 +39,13 @@ public class AddUsuarioController {
             BindingResult result,
             SessionStatus status, HttpServletRequest request) {
         PerfilModel objPerfilModel = new PerfilModel();
-        int idPerfil = Integer.parseInt(request.getParameter("Perfil"));
+        int idPerfil = Integer.parseInt(request.getParameter("perfil"));
         ModelAndView mv = new ModelAndView();
         u.setPerfil(objPerfilModel.getPerfil(idPerfil));
         PozoModel objPozoModel = new PozoModel();
         u.setPozo(objPozoModel.getPozo(1));
         u.setEstado(1);
-        if (result.hasErrors()) {
-            mv.setViewName("addUsuario");
-            mv.addObject("usuario", new Usuario());
-            List<Perfil> p = objPerfilModel.getAllPerfil();
-            mv.addObject("listadoPerfil", p);
-            System.out.println(result.toString());
-            return mv;
-        } else {
+        try {
             UsuarioModel objUsuarioModel = new UsuarioModel();
             objUsuarioModel.createUsuario(u);
             mv.addObject("usuario", u);
@@ -61,6 +55,13 @@ public class AddUsuarioController {
             mv.addObject("listadoMenu", listado);
             mv.setViewName("home");
             return mv;
+        } catch (HibernateException e) {
+            mv.setViewName("addUsuario");
+            mv.addObject("usuario", new Usuario());
+            List<Perfil> p = objPerfilModel.getAllPerfil();
+            mv.addObject("listadoPerfil", p);
+            return mv;
         }
+
     }
 }

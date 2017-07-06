@@ -38,8 +38,10 @@ public class UsuarioModel {
         try {
             session.save(objUsuario);
             tx.commit();
+            session.flush();
         } catch (HibernateException ex) {
             ex.printStackTrace();
+            System.out.println(ex.toString());
             tx.rollback();
         }
 

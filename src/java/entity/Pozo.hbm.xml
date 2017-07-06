@@ -6,7 +6,7 @@
     <class name="entity.Pozo" table="Pozo" schema="dbo" catalog="PollaGol" optimistic-lock="version">
         <id name="idPozo" type="int">
             <column name="id_pozo" />
-            <generator class="increment" />
+            <generator class="identity" />
         </id>
         <property name="pozo" type="int">
             <column name="pozo" not-null="true" />
