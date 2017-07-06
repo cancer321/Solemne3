@@ -1,7 +1,8 @@
 package entity;
-// Generated Jul 4, 2017 11:49:37 PM by Hibernate Tools 4.3.1
+// Generated Jul 5, 2017 8:21:03 PM by Hibernate Tools 4.3.1
 
 
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -14,22 +15,25 @@ public class Sorteo  implements java.io.Serializable {
      private int idSorteo;
      private Pozo pozo;
      private String combinacion;
-     private Set juegoSorteos = new HashSet(0);
+     private Date fechaSorteo;
+     private Set juegos = new HashSet(0);
 
     public Sorteo() {
     }
 
 	
-    public Sorteo(int idSorteo, Pozo pozo, String combinacion) {
+    public Sorteo(int idSorteo, Pozo pozo, String combinacion, Date fechaSorteo) {
         this.idSorteo = idSorteo;
         this.pozo = pozo;
         this.combinacion = combinacion;
+        this.fechaSorteo = fechaSorteo;
     }
-    public Sorteo(int idSorteo, Pozo pozo, String combinacion, Set juegoSorteos) {
+    public Sorteo(int idSorteo, Pozo pozo, String combinacion, Date fechaSorteo, Set juegos) {
        this.idSorteo = idSorteo;
        this.pozo = pozo;
        this.combinacion = combinacion;
-       this.juegoSorteos = juegoSorteos;
+       this.fechaSorteo = fechaSorteo;
+       this.juegos = juegos;
     }
    
     public int getIdSorteo() {
@@ -53,12 +57,19 @@ public class Sorteo  implements java.io.Serializable {
     public void setCombinacion(String combinacion) {
         this.combinacion = combinacion;
     }
-    public Set getJuegoSorteos() {
-        return this.juegoSorteos;
+    public Date getFechaSorteo() {
+        return this.fechaSorteo;
     }
     
-    public void setJuegoSorteos(Set juegoSorteos) {
-        this.juegoSorteos = juegoSorteos;
+    public void setFechaSorteo(Date fechaSorteo) {
+        this.fechaSorteo = fechaSorteo;
+    }
+    public Set getJuegos() {
+        return this.juegos;
+    }
+    
+    public void setJuegos(Set juegos) {
+        this.juegos = juegos;
     }
 
 

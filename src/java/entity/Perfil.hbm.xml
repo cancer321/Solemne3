@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Jul 4, 2017 11:49:40 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated Jul 5, 2017 8:21:04 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="entity.Perfil" table="Perfil" schema="dbo" catalog="PollaGol">
+    <class name="entity.Perfil" table="Perfil" schema="dbo" catalog="PollaGol" optimistic-lock="version">
         <id name="idPerfil" type="int">
             <column name="id_perfil" />
-            <generator class="identity" />
+            <generator class="IDENTITY" />
         </id>
         <property name="nombrePerfil" type="string">
             <column name="nombre_perfil" length="50" not-null="true" />

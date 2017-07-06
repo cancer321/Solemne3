@@ -1,5 +1,5 @@
 package entity;
-// Generated Jul 4, 2017 11:49:37 PM by Hibernate Tools 4.3.1
+// Generated Jul 5, 2017 8:21:03 PM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -12,26 +12,44 @@ public class Juego  implements java.io.Serializable {
 
 
      private int idJuego;
+     private Sorteo sorteo;
      private String combinacion;
-     private int ganadorAciertos;
+     private Integer ganadorAciertos;
+     private int num1;
+     private int num2;
+     private int num3;
+     private int num4;
+     private int num5;
+     private int num6;
      private Set usuarioJuegos = new HashSet(0);
-     private Set juegoSorteos = new HashSet(0);
 
     public Juego() {
     }
 
 	
-    public Juego(int idJuego, String combinacion, int ganadorAciertos) {
+    public Juego(int idJuego, Sorteo sorteo, String combinacion, int num1, int num2, int num3, int num4, int num5, int num6) {
         this.idJuego = idJuego;
+        this.sorteo = sorteo;
         this.combinacion = combinacion;
-        this.ganadorAciertos = ganadorAciertos;
+        this.num1 = num1;
+        this.num2 = num2;
+        this.num3 = num3;
+        this.num4 = num4;
+        this.num5 = num5;
+        this.num6 = num6;
     }
-    public Juego(int idJuego, String combinacion, int ganadorAciertos, Set usuarioJuegos, Set juegoSorteos) {
+    public Juego(int idJuego, Sorteo sorteo, String combinacion, Integer ganadorAciertos, int num1, int num2, int num3, int num4, int num5, int num6, Set usuarioJuegos) {
        this.idJuego = idJuego;
+       this.sorteo = sorteo;
        this.combinacion = combinacion;
        this.ganadorAciertos = ganadorAciertos;
+       this.num1 = num1;
+       this.num2 = num2;
+       this.num3 = num3;
+       this.num4 = num4;
+       this.num5 = num5;
+       this.num6 = num6;
        this.usuarioJuegos = usuarioJuegos;
-       this.juegoSorteos = juegoSorteos;
     }
    
     public int getIdJuego() {
@@ -41,6 +59,13 @@ public class Juego  implements java.io.Serializable {
     public void setIdJuego(int idJuego) {
         this.idJuego = idJuego;
     }
+    public Sorteo getSorteo() {
+        return this.sorteo;
+    }
+    
+    public void setSorteo(Sorteo sorteo) {
+        this.sorteo = sorteo;
+    }
     public String getCombinacion() {
         return this.combinacion;
     }
@@ -48,12 +73,54 @@ public class Juego  implements java.io.Serializable {
     public void setCombinacion(String combinacion) {
         this.combinacion = combinacion;
     }
-    public int getGanadorAciertos() {
+    public Integer getGanadorAciertos() {
         return this.ganadorAciertos;
     }
     
-    public void setGanadorAciertos(int ganadorAciertos) {
+    public void setGanadorAciertos(Integer ganadorAciertos) {
         this.ganadorAciertos = ganadorAciertos;
+    }
+    public int getNum1() {
+        return this.num1;
+    }
+    
+    public void setNum1(int num1) {
+        this.num1 = num1;
+    }
+    public int getNum2() {
+        return this.num2;
+    }
+    
+    public void setNum2(int num2) {
+        this.num2 = num2;
+    }
+    public int getNum3() {
+        return this.num3;
+    }
+    
+    public void setNum3(int num3) {
+        this.num3 = num3;
+    }
+    public int getNum4() {
+        return this.num4;
+    }
+    
+    public void setNum4(int num4) {
+        this.num4 = num4;
+    }
+    public int getNum5() {
+        return this.num5;
+    }
+    
+    public void setNum5(int num5) {
+        this.num5 = num5;
+    }
+    public int getNum6() {
+        return this.num6;
+    }
+    
+    public void setNum6(int num6) {
+        this.num6 = num6;
     }
     public Set getUsuarioJuegos() {
         return this.usuarioJuegos;
@@ -61,13 +128,6 @@ public class Juego  implements java.io.Serializable {
     
     public void setUsuarioJuegos(Set usuarioJuegos) {
         this.usuarioJuegos = usuarioJuegos;
-    }
-    public Set getJuegoSorteos() {
-        return this.juegoSorteos;
-    }
-    
-    public void setJuegoSorteos(Set juegoSorteos) {
-        this.juegoSorteos = juegoSorteos;
     }
 
 

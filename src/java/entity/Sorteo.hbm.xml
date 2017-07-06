@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Jul 4, 2017 11:49:40 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated Jul 5, 2017 8:21:04 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="entity.Sorteo" table="Sorteo" schema="dbo" catalog="PollaGol">
+    <class name="entity.Sorteo" table="Sorteo" schema="dbo" catalog="PollaGol" optimistic-lock="version">
         <id name="idSorteo" type="int">
             <column name="id_sorteo" />
-            <generator class="identity" />
+            <generator class="IDENTITY" />
         </id>
         <many-to-one name="pozo" class="entity.Pozo" fetch="select">
             <column name="id_pozo" not-null="true" />
@@ -14,11 +14,14 @@
         <property name="combinacion" type="string">
             <column name="combinacion" length="50" not-null="true" />
         </property>
-        <set name="juegoSorteos" table="Juego_Sorteo" inverse="true" lazy="true" fetch="select">
+        <property name="fechaSorteo" type="date">
+            <column name="fecha_sorteo" length="10" not-null="true" />
+        </property>
+        <set name="juegos" table="Juego" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="id_sorteo" not-null="true" />
             </key>
-            <one-to-many class="entity.JuegoSorteo" />
+            <one-to-many class="entity.Juego" />
         </set>
     </class>
 </hibernate-mapping>

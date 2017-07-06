@@ -38,6 +38,7 @@ public class AddUsuarioController {
         u.setPerfil(objPerfilModel.getPerfil(2));
         PozoModel objPozoModel = new PozoModel();
         u.setPozo(objPozoModel.getPozo(1));
+        u.setEstado(1);
         if (result.hasErrors()) {
             mv.setViewName("addUsuario");
             mv.addObject("usuario", new Usuario());

@@ -31,6 +31,9 @@
                             <form:label for="fon" path="fondo">Agregar fondo</form:label>
                             <form:input path="fondo"/>
                         </div>
+                        <div class="six columns">
+                            Fondo actual $<c:out value="${usuario.fondo}"/>
+                        </div>
                     </div>
                     <form:button>Agregar dinero</form:button>
                 </form:form>

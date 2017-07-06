@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Jul 4, 2017 11:49:40 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated Jul 5, 2017 8:21:04 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="entity.HistorialGanadores" table="Historial_ganadores" schema="dbo" catalog="PollaGol">
+    <class name="entity.HistorialGanadores" table="Historial_ganadores" schema="dbo" catalog="PollaGol" optimistic-lock="version">
         <id name="idHg" type="int">
             <column name="id_hg" />
-            <generator class="identity" />
+            <generator class="IDENTITY" />
         </id>
         <many-to-one name="usuarioJuego" class="entity.UsuarioJuego" fetch="select">
             <column name="id_usuario_juego" not-null="true" />

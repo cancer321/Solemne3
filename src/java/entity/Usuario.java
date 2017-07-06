@@ -1,5 +1,5 @@
 package entity;
-// Generated Jul 4, 2017 11:49:37 PM by Hibernate Tools 4.3.1
+// Generated Jul 5, 2017 8:21:03 PM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -25,13 +25,6 @@ public class Usuario  implements java.io.Serializable {
     public Usuario() {
     }
 
-    public Usuario(String nombreUsuario, String password) {
-        this.nombreUsuario = nombreUsuario;
-        this.password = password;
-    }
-    
-    
-
 	
     public Usuario(int idUsuario, Perfil perfil, Pozo pozo, String nombreUsuario, String nombre, String apellido, String password, int fondo, int estado) {
         this.idUsuario = idUsuario;
@@ -56,6 +49,13 @@ public class Usuario  implements java.io.Serializable {
        this.estado = estado;
        this.usuarioJuegos = usuarioJuegos;
     }
+
+    public Usuario(String nombreUsuario, String password) {
+        this.nombreUsuario = nombreUsuario;
+        this.password = password;
+    }
+    
+    
    
     public int getIdUsuario() {
         return this.idUsuario;

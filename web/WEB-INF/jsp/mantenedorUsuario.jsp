@@ -16,10 +16,10 @@
         <div class="container">
             <section class="header">
                 <jsp:useBean id="usuarioConectado" class="entity.Usuario" scope="page"/>
+                <jsp:useBean id="usu" class="entity.Usuario" scope="page"/>
                 <h1 class="title">Bienvenido ${usuario.nombreUsuario}.</h1>
             </section>
             <jsp:include page="./menu.jsp" flush="true"/>
-            <jsp:useBean id="usuario" class="entity.Usuario" scope="page"/>
             <div class="docs-section" id="meme">
                 <table class="u-full-width">
                     <thead>
@@ -41,6 +41,22 @@
                                 <td><c:out value="${usu.fondo}"/></td>
                                 <td><c:out value="${usu.estado}"/></td>
                                 <td><c:out value="${usu.perfil.nombrePerfil}"/></td>
+                                <c:url var="editar" value="/editarTrabajador">
+                                    <c:param name="id_trabajador" value="${usu.idUsuario}"/>
+                                </c:url>
+                                <td><button type="button" class="btn btn-xs btn-warning" onclick="window.location.href = '${editar}'">Editar</button></td>                                            
+                                <c:if test="${usu.estado==0}">
+                                    <c:url var="eliminar" value="/eliminaTrabajador">
+                                        <c:param name="id_trabajador" value="${usu.idUsuario}"/>
+                                    </c:url>
+                                    <td><button type="button" onclick="window.location.href = '${eliminar}'">Habilitar</button></td>
+                                </c:if>
+                                <c:if test="${usu.estado==1}">
+                                    <c:url var="eliminar" value="/eliminaTrabajador">
+                                        <c:param name="id_trabajador" value="${usu.idUsuario}"/>
+                                    </c:url>
+                                    <td><button type="button" onclick="window.location.href = '${eliminar}'">Deshabilitar</button></td>
+                                </c:if>
                             </tr>
                         </c:forEach>
                     </tbody>

@@ -30,6 +30,7 @@ public class AddPagoController {
             int id = usu.getPerfil().getIdPerfil();
             List<Menu> listado = menuModel.getMenuXPerfil(id);
             mv.addObject("listadoMenu", listado);
+            mv.addObject("dineroActual", usu);
             mv.addObject("usuario", usu);
             mv.setViewName("addPago");
             return mv;
@@ -41,6 +42,7 @@ public class AddPagoController {
     @RequestMapping(method = RequestMethod.POST)
     public ModelAndView form(
             @ModelAttribute("usuario") Usuario u,
+            @ModelAttribute("dineroActual") Usuario dinero,
             BindingResult result,
             SessionStatus status,
             HttpServletRequest request) {
@@ -51,9 +53,15 @@ public class AddPagoController {
             return mav;
         } else {
             UsuarioModel objUsuarioModel = new UsuarioModel();
+            int total = u.getFondo() + dinero.getFondo();
+            u.setFondo(total);
             objUsuarioModel.updateUsuario(u);
             ModelAndView mav = new ModelAndView();
             mav.addObject("usuario", u);
+            int id = u.getPerfil().getIdPerfil();
+            MenuModel menuModel = new MenuModel();
+            List<Menu> listado = menuModel.getMenuXPerfil(id);
+            mav.addObject("listadoMenu", listado);
             mav.setViewName("addPago");
             return mav;
         }

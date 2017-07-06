@@ -25,7 +25,31 @@
             </section>
             <jsp:include page="./menu.jsp" flush="true"/>
             <div class="docs-section" id="meme">
-                <form:form method="POST" commandName="usuario">
+                <form:form method="POST" commandName="juego">
+                    <div class="row">
+                        <div class="six columns">
+                            <form:label for="fon" path="fondo">Numero 1</form:label>
+                            <form:input path="fondo"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="six columns">
+                            <form:label for="fon" path="fondo">Numero 1</form:label>
+                            <form:input path="fondo"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="six columns">
+                            <form:label for="fon" path="fondo">Agregar fondo</form:label>
+                            <form:input path="fondo"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="six columns">
+                            <form:label for="fon" path="fondo">Agregar fondo</form:label>
+                            <form:input path="fondo"/>
+                        </div>
+                    </div>
                     <div class="row">
                         <div class="six columns">
                             <form:label for="fon" path="fondo">Agregar fondo</form:label>
