@@ -6,7 +6,7 @@
     <class name="entity.HistorialGanadores" table="Historial_ganadores" schema="dbo" catalog="PollaGol" optimistic-lock="version">
         <id name="idHg" type="int">
             <column name="id_hg" />
-            <generator class="IDENTITY" />
+            <generator class="increment" />
         </id>
         <many-to-one name="usuarioJuego" class="entity.UsuarioJuego" fetch="select">
             <column name="id_usuario_juego" not-null="true" />

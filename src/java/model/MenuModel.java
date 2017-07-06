@@ -1,4 +1,3 @@
-
 package model;
 
 import entity.Menu;
@@ -10,79 +9,89 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 public class MenuModel {
+
     private Session session;
+
     public MenuModel() {
-        this.session=HibernateUtil.getSessionFactory().getCurrentSession();
+        try {
+            this.session = HibernateUtil.getSessionFactory().openSession();
+        } catch (HibernateException ex) {
+            this.session = HibernateUtil.getSessionFactory().getCurrentSession();
+        }
     }
-    
-    public List<Menu>getAllMenu(){        
-        List<Menu>listadoMenu=new LinkedList<>();
-        try{
-            Transaction tx=session.beginTransaction();
-            listadoMenu=session.createCriteria(Menu.class).list() ;
-            tx.commit();            
-        }catch(HibernateException ex){
+
+    public List<Menu> getAllMenu() {
+        List<Menu> listadoMenu = new LinkedList<>();
+        try {
+            Transaction tx = session.beginTransaction();
+            listadoMenu
+                    = session.createCriteria(Menu.class
+                    ).list();
+            tx.commit();
+        } catch (HibernateException ex) {
             ex.printStackTrace();
         }
         return listadoMenu;
     }
-    
-    public void createMenu(Menu objMenu){        
-        Transaction tx=session.beginTransaction();
-        try{            
-            session.save(objMenu);                 
-        }catch(HibernateException ex){
+
+    public void createMenu(Menu objMenu) {
+        Transaction tx = session.beginTransaction();
+        try {
+            session.save(objMenu);
+        } catch (HibernateException ex) {
             ex.printStackTrace();
             tx.rollback();
         }
-        
+
     }
-    
-    public void updateMenu(Menu objMenu){        
-        Transaction tx=session.beginTransaction();
-        try{            
+
+    public void updateMenu(Menu objMenu) {
+        Transaction tx = session.beginTransaction();
+        try {
             session.update(objMenu);
-            tx.commit();            
-        }catch(HibernateException ex){
-            ex.printStackTrace();
-            tx.rollback();
-        }        
-    }
-    
-    public void removeMenu(Menu objMenu){        
-        Transaction tx=session.beginTransaction();
-        try{            
-            session.delete(objMenu);
-            tx.commit();            
-        }catch(HibernateException ex){
+            tx.commit();
+        } catch (HibernateException ex) {
             ex.printStackTrace();
             tx.rollback();
         }
-        
     }
-    
-    public Menu getMenu(int id){
-        Menu objMenu=null;
-        Transaction tx=session.beginTransaction();
-        try{
-            objMenu=(Menu)session.get(Menu.class,id);
-            tx.commit();            
-        }catch(HibernateException ex){
+
+    public void removeMenu(Menu objMenu) {
+        Transaction tx = session.beginTransaction();
+        try {
+            session.delete(objMenu);
+            tx.commit();
+        } catch (HibernateException ex) {
+            ex.printStackTrace();
+            tx.rollback();
+        }
+
+    }
+
+    public Menu getMenu(int id) {
+        Menu objMenu = null;
+        Transaction tx = session.beginTransaction();
+
+        try {
+            objMenu = (Menu) session.get(Menu.class,
+                     id);
+            tx.commit();
+        } catch (HibernateException ex) {
             ex.printStackTrace();
             tx.rollback();
         }
         return objMenu;
     }
-    
-     public List<Menu>getMenuXPerfil(int id){
-        Transaction tx=this.session.beginTransaction();
-        List<Menu> listadoMenu=null;
-        try{
-            Query query=this.session.createQuery("from Menu as menu where menu.perfil.idPerfil = :perfil");
+
+    public List<Menu> getMenuXPerfil(int id) {
+        Transaction tx = this.session.beginTransaction();
+        List<Menu> listadoMenu = null;
+        try {
+            Query query = this.session.createQuery("from Menu as menu where menu.perfil.idPerfil = :perfil");
             query.setParameter("perfil", id);
-            listadoMenu=(List<Menu>)query.list();
+            listadoMenu = (List<Menu>) query.list();
             tx.commit();
-        }catch(HibernateException ex){
+        } catch (HibernateException ex) {
             ex.printStackTrace();
         }
         return listadoMenu;

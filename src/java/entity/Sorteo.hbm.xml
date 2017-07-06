@@ -6,7 +6,7 @@
     <class name="entity.Sorteo" table="Sorteo" schema="dbo" catalog="PollaGol" optimistic-lock="version">
         <id name="idSorteo" type="int">
             <column name="id_sorteo" />
-            <generator class="IDENTITY" />
+            <generator class="increment" />
         </id>
         <many-to-one name="pozo" class="entity.Pozo" fetch="select">
             <column name="id_pozo" not-null="true" />

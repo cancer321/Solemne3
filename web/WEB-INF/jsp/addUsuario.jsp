@@ -47,6 +47,15 @@
                             <form:input cssClass="u-full-width" path="apellido"/>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="twelve column">
+                            <form:label path="Perfil" >Perfil</form:label>
+                            <form:select path="Perfil" multiple="false">
+                                <form:option value="0"> --- Seleccione Perfil ---</form:option>
+                                <form:options items="${listadoPerfil}" itemValue="idPerfil" itemLabel="nombrePerfil"/>
+                            </form:select>
+                        </div>
+                    </div>
                     <form:button>Registrar</form:button>
                 </form:form>
             </div>

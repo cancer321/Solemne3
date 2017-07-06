@@ -1,6 +1,7 @@
 package controller;
 
 import entity.Menu;
+import entity.Perfil;
 import entity.Usuario;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
@@ -25,6 +26,9 @@ public class AddUsuarioController {
         ModelAndView mv = new ModelAndView();
         mv.setViewName("addUsuario");
         mv.addObject("usuario", new Usuario());
+        PerfilModel objPerfilModel = new PerfilModel();
+        List<Perfil> p = objPerfilModel.getAllPerfil();
+        mv.addObject("listadoPerfil", p);
         return mv;
 
     }
@@ -34,14 +38,18 @@ public class AddUsuarioController {
             BindingResult result,
             SessionStatus status, HttpServletRequest request) {
         PerfilModel objPerfilModel = new PerfilModel();
+        int idPerfil = Integer.parseInt(request.getParameter("Perfil"));
         ModelAndView mv = new ModelAndView();
-        u.setPerfil(objPerfilModel.getPerfil(2));
+        u.setPerfil(objPerfilModel.getPerfil(idPerfil));
         PozoModel objPozoModel = new PozoModel();
         u.setPozo(objPozoModel.getPozo(1));
         u.setEstado(1);
         if (result.hasErrors()) {
             mv.setViewName("addUsuario");
             mv.addObject("usuario", new Usuario());
+            List<Perfil> p = objPerfilModel.getAllPerfil();
+            mv.addObject("listadoPerfil", p);
+            System.out.println(result.toString());
             return mv;
         } else {
             UsuarioModel objUsuarioModel = new UsuarioModel();
