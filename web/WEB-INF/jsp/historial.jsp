@@ -16,52 +16,48 @@
         <div class="container">
             <section class="header">
                 <jsp:useBean id="usuarioConectado" class="entity.Usuario" scope="page"/>
-                <jsp:useBean id="usu" class="entity.Usuario" scope="page"/>
-                <h1 class="title">Bienvenido ${usuario.nombreUsuario}.</h1>
+                <jsp:useBean id="sorteo" class="entity.Sorteo" scope="page"/>
+                <jsp:useBean id="HG" class="entity.HistorialGanadores" scope="page"/>
+                <h1 class="title">Bienvenido</h1>
             </section>
             <jsp:include page="./menu.jsp" flush="true"/>
             <div class="docs-section" id="meme">
+                <h4>Sorteos</h4>
                 <table class="u-full-width">
                     <thead>
                         <tr>
-                            <td>Username</td>
-                            <td>Nombre</td>
-                            <td>Apellido</td>
-                            <td>Fondo</td>
-                            <td>Estado</td>
-                            <td>Perfil</td>
+                            <td>Combinacion</td>
+                            <td>Fecha Sorteo</td>
                         </tr>
                     </thead>
                     <tbody>
-                        <c:forEach items="${listaUsu}" var="usu">
+                        <c:forEach items="${listaSorteo}" var="sorteo">
                             <tr>
-                                <td><c:out value="${usu.nombreUsuario}"/></td>
-                                <td><c:out value="${usu.nombre}"/></td>
-                                <td><c:out value="${usu.apellido}"/></td>
-                                <td><c:out value="${usu.fondo}"/></td>
-                                <c:if test="${usu.estado==0}">
-                                    <td>Deshabilitado</td>
-                                </c:if>
-                                <c:if test="${usu.estado==1}">
-                                    <td>Habilitado</td>
-                                </c:if>
-                                <td><c:out value="${usu.perfil.nombrePerfil}"/></td>
-                                <c:url var="editar" value="/editUsuario.htm">
-                                    <c:param name="id_usuario" value="${usu.idUsuario}"/>
-                                </c:url>
-                                <td><button type="button" class="btn btn-xs btn-warning" onclick="window.location.href = '${editar}'">Editar</button></td>                                            
-                                <c:if test="${usu.estado==0}">
-                                    <c:url var="eliminar" value="/deleteUsuario.htm">
-                                        <c:param name="id_usuario" value="${usu.idUsuario}"/>
-                                    </c:url>
-                                    <td><button type="button" onclick="window.location.href = '${eliminar}'">Habilitar</button></td>
-                                </c:if>
-                                <c:if test="${usu.estado==1}">
-                                    <c:url var="eliminar" value="/deleteUsuario.htm">
-                                        <c:param name="id_usuario" value="${usu.idUsuario}"/>
-                                    </c:url>
-                                    <td><button type="button" onclick="window.location.href = '${eliminar}'">Deshabilitar</button></td>
-                                </c:if>
+                                <td><c:out value="${sorteo.combinacion}"/></td>
+                                <td><c:out value="${sorteo.fechaSorteo}"/></td>
+                            </tr>
+                        </c:forEach>
+                    </tbody>
+                </table>
+            </div>
+            <div class="docs-section" id="meme">
+                <h4>Historial</h4>
+                <table class="u-full-width">
+                    <thead>
+                        <tr>
+                            <td>Nombre Usuario</td>
+                            <td>Fecha juego</td>
+                            <td>Cantidad de aciertos ganados</td>
+                            <td>Combinacion</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <c:forEach items="${listaHG}" var="HG">
+                            <tr>
+                                <td><c:out value="${HG.usuarioJuego.usuario.nombreUsuario}"/></td>
+                                <td><c:out value="${HG.usuarioJuego.fechaJuego}"/></td>
+                                <td><c:out value="${HG.usuarioJuego.juego.ganadorAciertos}"/></td>
+                                <td><c:out value="${HG.usuarioJuego.juego.combinacion}"/></td>
                             </tr>
                         </c:forEach>
                     </tbody>

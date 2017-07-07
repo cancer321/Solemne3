@@ -23,6 +23,7 @@
                 <prop key="mantenedorUsuario.htm">MantenedorUsuarioController</prop>
                 <prop key="editUsuario.htm">EditUsuarioController</prop>
                 <prop key="deleteUsuario.htm">DeleteUsuarioController</prop>
+                <prop key="historial.htm">HistorialController</prop>
             </props>
         </property>
     </bean>
@@ -36,6 +37,7 @@
     <bean name="MantenedorUsuarioController" class="controller.MantenedorUsuarioController" />
     <bean name="EditUsuarioController" class="controller.EditUsuarioController" />
     <bean name="DeleteUsuarioController" class="controller.DeleteUsuarioController" />
+    <bean name="HistorialController" class="controller.HistorialController" />
 
     <bean id="viewResolver"
           class="org.springframework.web.servlet.view.InternalResourceViewResolver"
